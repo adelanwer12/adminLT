@@ -27,12 +27,10 @@ import {UserDropdownMenuComponent} from "@/dashboard/header/user-dropdown-menu/u
 import {LanguageDropdownComponent} from "@/dashboard/header/language-dropdown/language-dropdown.component";
 import {AppButtonComponent} from "@pages/app-button/app-button.component";
 import {PrivacyPolicyComponent} from "@pages/privacy-policy/privacy-policy.component";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AccountHackedComponent } from './pages/Tools/account-hacked/account-hacked.component';
-import { AccountCardedComponent } from './pages/Tools/account-carded/account-carded.component';
 import { DatingComponent } from './pages/Tools/dating/dating.component';
 import { StuffsComponent } from './pages/Tools/stuffs/stuffs.component';
 import { RDPsComponent } from './pages/Tools/rdps/rdps.component';
+import { AccountComponent } from './pages/Tools/account/account.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -56,11 +54,10 @@ registerLocaleData(localeEn, 'en-EN');
         RecoverPasswordComponent,
         LanguageDropdownComponent,
         PrivacyPolicyComponent,
-        AccountHackedComponent,
-        AccountCardedComponent,
         DatingComponent,
         StuffsComponent,
-        RDPsComponent
+        RDPsComponent,
+        AccountComponent
     ],
   imports: [
     BrowserModule,
@@ -73,8 +70,7 @@ registerLocaleData(localeEn, 'en-EN');
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     }),
-    FormsModule,
-    NgbModule
+    FormsModule
   ],
     providers: [],
     bootstrap: [AppComponent]

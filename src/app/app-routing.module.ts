@@ -10,18 +10,16 @@ import {RegisterComponent} from "@/account/register/register.component";
 import {ForgotPasswordComponent} from "@/account/forgot-password/forgot-password.component";
 import {RecoverPasswordComponent} from "@/account/recover-password/recover-password.component";
 import {PrivacyPolicyComponent} from "@pages/privacy-policy/privacy-policy.component";
-import {AccountHackedComponent} from "@pages/Tools/account-hacked/account-hacked.component";
-import {AccountCardedComponent} from "@pages/Tools/account-carded/account-carded.component";
 import {DatingComponent} from "@pages/Tools/dating/dating.component";
 import {StuffsComponent} from "@pages/Tools/stuffs/stuffs.component";
 import {RDPsComponent} from "@pages/Tools/rdps/rdps.component";
+import {AccountComponent} from "@pages/Tools/account/account.component";
 
 const routes: Routes = [
     {path: '',component: MainComponent,canActivate: [AuthGuard],canActivateChild: [AuthGuard],
         children: [
           {path: 'profile',component: ProfileComponent},
-          {path: 'accounthacked',component: AccountHackedComponent},
-          {path: 'accountcarded',component: AccountCardedComponent},
+          {path: 'account',component: AccountComponent},
           {path: 'Dating',component: DatingComponent},
           {path: 'stuffs',component: StuffsComponent},
           {path: 'RDPs',component: RDPsComponent},

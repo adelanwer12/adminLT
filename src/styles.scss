@@ -17,6 +17,9 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 0;
     background: transparent;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

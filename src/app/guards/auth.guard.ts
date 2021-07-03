@@ -7,47 +7,28 @@ import {
     UrlTree,
     Router
 } from '@angular/router';
-import {Observable} from 'rxjs';
-import {AppService} from '@services/app.service';
+import { Observable} from 'rxjs';
+import {AccountService} from "@services/account.service";
+import {ToastrService} from "ngx-toastr";
+import {map} from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-    constructor(private router: Router, private appService: AppService) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        return this.getProfile();
-    }
+    constructor(private accountService: AccountService, private toastr: ToastrService,private route:Router) {}
 
-    canActivateChild(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        return this.canActivate(next, state);
-    }
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
+    return this.accountService.currentUser$.pipe(
+      map(user=>{
+        if (user) return true;
+      })
+    );
+  }
 
-    async getProfile() {
-        if (this.appService.user) {
-            return true;
-        }
+  canActivateChild(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
+    return this.canActivate(next, state);
+  }
 
-        try {
-            await this.appService.getProfile();
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
 }

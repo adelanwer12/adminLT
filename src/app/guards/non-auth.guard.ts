@@ -24,7 +24,7 @@ export class NonAuthGuard implements CanActivate, CanActivateChild {
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        if (!localStorage.getItem('token')) {
+        if (!localStorage.getItem('user')) {
             return true;
         }
         this.router.navigate(['/']);
